@@ -1,7 +1,7 @@
 package com.mysite.sbb.user.controller;
 
-import com.mysite.sbb.article.dao.ArticleRepository;
-import com.mysite.sbb.article.domain.Article;
+import com.mysite.sbb.user.dao.UserRepository;
+import com.mysite.sbb.user.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
     @Autowired
-    private ArticleRepository userRepository;
+    private UserRepository userRepository;
 
     @RequestMapping("/list")
     @ResponseBody
-    public List<Article> showList(){
+    public List<User> showList(){
         return userRepository.findAll();
     }
 }
