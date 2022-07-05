@@ -1,14 +1,15 @@
-package com.mysite.sbb.controller;
+package com.mysite.sbb;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller
+@Controller //어노테이션
 public class MainController {
     @RequestMapping("/sbb")
     @ResponseBody
     public String index(){
-        return "바보";
+
+        return "index";
     }
 }
