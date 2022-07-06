@@ -20,4 +20,10 @@ public class ArticleController {
     public List<Article> showList(){
         return articleRepository.findAll();
     }
+
+    @RequestMapping("/detail")
+    @ResponseBody
+    public Article showOne(){
+        return articleRepository.findById(1L).get();
+    }
 }
