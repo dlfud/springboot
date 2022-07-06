@@ -35,4 +35,26 @@ public class ArticleController {
         Optional<Article> article = articleRepository.findById(id);
         return article.orElse(null);
     }
+
+    @RequestMapping("/modify")
+    @ResponseBody
+    public Article Modify(long id, String title, String body){
+        Article article = articleRepository.findById(id).get();
+        if(title != null){
+            article.setTitle(title);
+        }
+        if(body != null){
+            article.setBody(body);
+        }
+        articleRepository.save(article);
+
+        return article;
+    }
+
+    @RequestMapping("/doDelete")
+    @ResponseBody
+    public String doDelete(long id){
+        articleRepository.deleteById(id);
+        return "%d번 게시물이 삭제되었습니다.".formatted(id);
+    }
 }
