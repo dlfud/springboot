@@ -39,14 +39,14 @@ public class ArticleController {
     @RequestMapping("/modify")
     @ResponseBody
     public Article Modify(long id, String title, String body){
-        Article article = articleRepository.findById(id).get();
+        Article article = articleRepository.findById(id).get();// 조건에 맞는 데이터 가져오기
         if(title != null){
-            article.setTitle(title);
+            article.setTitle(title);// 불러온 데이터 수정
         }
         if(body != null){
             article.setBody(body);
         }
-        articleRepository.save(article);
+        articleRepository.save(article);//수정된 데이터 db에 저장
 
         return article;
     }
