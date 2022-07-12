@@ -37,16 +37,16 @@ public class ArticleController {
     }
 
     @RequestMapping("/modify")
-    @ResponseBody
-    public Article Modify(long id, String title, String body){
-        Article article = articleRepository.findById(id).get();// 조건에 맞는 데이터 가져오기
-        if(title != null){
-            article.setTitle(title);// 불러온 데이터 수정
-        }
-        if(body != null){
-            article.setBody(body);
-        }
-        articleRepository.save(article);//수정된 데이터 db에 저장
+        @ResponseBody
+        public Article Modify(long id, String title, String body){
+            Article article = articleRepository.findById(id).get();// 조건에 맞는 데이터 가져오기
+            if(title != null){
+                article.setTitle(title);// 불러온 데이터 수정
+            }
+            if(body != null){
+                article.setBody(body);
+            }
+            articleRepository.save(article);//수정된 데이터 db에 저장
 
         return article;
     }
@@ -54,6 +54,9 @@ public class ArticleController {
     @RequestMapping("/doDelete")
     @ResponseBody
     public String doDelete(long id){
+        if(!articleRepository.existsById(id)){
+            return "%d번 게시물은 이미 삭제되었거나 없는 게시물입니다.".formatted(id);
+        }
         articleRepository.deleteById(id);
         return "%d번 게시물이 삭제되었습니다.".formatted(id);
     }
