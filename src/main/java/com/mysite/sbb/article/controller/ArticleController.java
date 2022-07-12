@@ -20,15 +20,28 @@ public class ArticleController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public List<Article> showList(){
+    public List<Article> showList(String title, String body){
+        if(title != null && body == null){
+            if(articleRepository.existsByTitle(title) == false){
+                System.out.println("제목과 일치하는 게시물이 없습니다.");
+                return null;
+            }
+            return articleRepository.findByTitle(title);
+        }else if(title == null && body != null){
+            if(articleRepository.existsByBody(body) == false){
+                System.out.println("내용과 일치하는 게시몰이 없습니다.");
+                return null;
+            }
+            return articleRepository.findByBody(body);
+        }else if(title != null && body != null){
+            if(articleRepository.existsByTitleAndBody(title, body) == false){
+                System.out.println("제목, 내용과 일치하는 게시물이 없습니다.");
+                return null;
+            }
+            return articleRepository.findByTitleAndBody(title, body);
+        }
         return articleRepository.findAll();
     }
-
-//    @RequestMapping("/detail")
-//    @ResponseBody
-//    public Article showOne(){
-//        return articleRepository.findById(1L).get();
-//    }
 
     @RequestMapping("/detail")
     @ResponseBody
@@ -65,12 +78,34 @@ public class ArticleController {
 
     @RequestMapping("/findByTitle")
     @ResponseBody
-    public Object findByTitle(String title){
+    public List<Article> findByTitle(String title){
         List<Article> articles = articleRepository.findByTitle(title);
-        System.out.println(articles);
-        if(articles != null){
-            return "해당 제목의 게시물은 존재하지 않습니다.";
-        }
+
         return articles;
+    }
+
+    @RequestMapping("/doWrite")
+    @ResponseBody
+    public Object doWrite(String title, String body){
+        if(title == null || title.trim().length() == 0){
+            return "제목을 입력해 주세요.";
+        }
+        if(body == null || body.trim().length() == 0){
+            return "내용을 입력해 주세요.";
+        }
+
+        title = title.trim();
+        body = body.trim();
+
+        Article article = new Article();
+
+        article.setTitle(title);
+        article.setBody(body);
+        article.setRegDate(LocalDateTime.now());
+        article.setUpdateDate(LocalDateTime.now());
+
+        articleRepository.save(article);
+
+        return "%d번 게시물이 생성되었습니다.".formatted(article.getId());
     }
 }
