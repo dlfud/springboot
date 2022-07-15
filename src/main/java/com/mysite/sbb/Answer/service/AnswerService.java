@@ -1,4 +1,4 @@
-package com.mysite.sbb.answer;
+package com.mysite.sbb.Answer.service;
 
 import com.mysite.sbb.Answer.dao.AnswerRepository;
 import com.mysite.sbb.Answer.domain.Answer;

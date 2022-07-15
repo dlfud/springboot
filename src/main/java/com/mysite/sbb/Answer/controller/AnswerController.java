@@ -2,7 +2,7 @@ package com.mysite.sbb.Answer.controller;
 
 import com.mysite.sbb.Answer.dao.AnswerRepository;
 import com.mysite.sbb.Answer.domain.Answer;
-import com.mysite.sbb.answer.AnswerService;
+import com.mysite.sbb.Answer.service.AnswerService;
 import com.mysite.sbb.question.domain.Question;
 import com.mysite.sbb.question.service.QuestionService;
 import lombok.RequiredArgsConstructor;
