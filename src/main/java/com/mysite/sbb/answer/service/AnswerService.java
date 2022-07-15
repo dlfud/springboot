@@ -1,19 +1,18 @@
-package com.mysite.sbb.Answer.service;
+package com.mysite.sbb.answer.service;
 
-import com.mysite.sbb.Answer.dao.AnswerRepository;
-import com.mysite.sbb.Answer.domain.Answer;
+import com.mysite.sbb.answer.dao.AnswerRepository;
+import com.mysite.sbb.answer.domain.Answer;
 import com.mysite.sbb.question.domain.Question;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
-@RequiredArgsConstructor
 @Service
+@AllArgsConstructor
 public class AnswerService {
 
     private final AnswerRepository answerRepository;
-
 
     public void create(Question question, String content) {
         Answer answer = new Answer();
