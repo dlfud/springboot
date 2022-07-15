@@ -34,4 +34,6 @@ public class QuestionController {
 
         return "/user/question_detail";
     }
+
+
 }
