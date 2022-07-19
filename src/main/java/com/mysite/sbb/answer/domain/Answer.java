@@ -27,4 +27,18 @@ public class Answer {
     private Question question;
 }
 
+//db에선 varchar인데 여기서는 boolean 이므로 바꿔줌
+@Converter
+class BooleanToYNConverter implements AttributeConverter<Boolean, String>{
+    @Override
+    public String convertToDatabaseColumn(Boolean attribute) {
+        return (attribute != null && attribute) ? "Y" : "N";
+    }
+
+    @Override
+    public Boolean convertToEntityAttribute(String dbData) {
+        return "Y".equals(dbData);
+    }
+}
+
 
