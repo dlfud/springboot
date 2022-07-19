@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,5 +25,13 @@ public class AnswerController {
         Question question = this.questionService.getQuestion(id);
         this.answerService.create(question, content);
         return String.format("redirect:/question/detail/%s", id);
+    }
+
+    @PostMapping("/like/{questionId}/{answerId}")
+    public String toggleLike(@PathVariable("questionId") Integer questionId, @PathVariable("answerId") Integer answerId){
+        System.out.println("questionId" + questionId);
+        System.out.println("answerId" + answerId);
+        this.answerService.setLike(answerId);
+        return String.format("redirect:/question/detail/%s", questionId);
     }
 }

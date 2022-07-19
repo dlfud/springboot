@@ -21,6 +21,10 @@ public class Answer {
 
     private LocalDateTime createDate;
 
+    private Boolean replyLike;
+
     @ManyToOne
     private Question question;
 }
+
+

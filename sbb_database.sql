@@ -73,7 +73,8 @@ CREATE TABLE Question (
     id INT(11) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `subject` VARCHAR(200) NOT NULL,
     content TEXT NOT NULL,
-    create_date DATETIME NOT NULL
+    create_date DATETIME NOT NULL,
+    view_count INT(11) UNSIGNED NOT NULL DEFAULT 0
 );
 
 INSERT INTO Question SET
@@ -91,12 +92,15 @@ create_date = NOW(),
 `subject` = '질문 3',
 content = '질문내용 3';
 
+SELECT * FROM Question;
+
 
 CREATE TABLE Answer (
     id INT(11) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     content TEXT NOT NULL,
     create_date DATETIME NOT NULL,
-    question_id INT(11) UNSIGNED NOT NULL
+    question_id INT(11) UNSIGNED NOT NULL,
+    reply_like VARCHAR(10) NOT NULL
 );
 
 INSERT INTO Answer SET
@@ -112,4 +116,6 @@ question_id = 2;
 INSERT INTO Answer SET
 create_date = NOW(),
 content = '답변내용 3',
-question_id = 3;
+question_id = 3; 
+
+SELECT * FROM Answer;
