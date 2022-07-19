@@ -30,7 +30,7 @@
                 <div class="d-flex justify-content-end">
                     <div class="badge bg-light text-dark p-2">
                         <form th:action="@{|/answer/like/${question.id}/${answer.id}|}" method="post">
-                            <button th:classappend="${answer.replyLike} ? text-danger : ''" class="border-0" th:text="좋아요" type="submit"></button>
+                            <button th:classappend="${answer.replyLike} ? 'text-white bg-danger' : ''" class="border-0" th:text="좋아요" type="submit"></button>
                         </form>
                     </div>
                 </div>
