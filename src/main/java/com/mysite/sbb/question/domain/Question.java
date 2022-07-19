@@ -27,6 +27,9 @@ public class Question {
 
     private LocalDateTime createDate;
 
+    //db에서는 view_count로 써줘야 인식이 되나봄
+    private int viewCount;
+
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
 }

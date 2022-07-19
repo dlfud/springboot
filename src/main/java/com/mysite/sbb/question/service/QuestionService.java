@@ -19,9 +19,14 @@ public class QuestionService {
     }
 
     public Question getQuestion(Integer id) {
-        Optional<Question> question = this.questionRepository.findById(id);
-        if(question.isPresent()){
-            return question.get();
+        Optional<Question> opQuestion = this.questionRepository.findById(id);
+        if(opQuestion.isPresent()){
+            Question question = opQuestion.get();
+            //조회수 늘리기
+            question.setViewCount(question.getViewCount() + 1);
+            //바뀐 db저장
+            this.questionRepository.save(question);
+            return question;
         }
         else{
             throw new DataNotFoundException("question not Found");
