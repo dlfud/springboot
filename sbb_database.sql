@@ -119,3 +119,13 @@ content = '답변내용 3',
 question_id = 3; 
 
 SELECT * FROM Answer;
+
+
+CREATE TABLE site_user(
+    id BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_name TEXT UNIQUE NOT NULL,
+    `password` TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL
+);
+
+SELECT * FROM Siteuser;
