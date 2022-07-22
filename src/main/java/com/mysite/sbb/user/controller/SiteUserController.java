@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/user")
-@RequiredArgsConstructor
 public class SiteUserController {
     private final SiteUserService siteUserService;
 
@@ -39,7 +40,9 @@ public class SiteUserController {
         return "redirect:/";
     }
     @GetMapping("/login")
-    public String login(){
+    public String login(HttpServletRequest request){
+        String referrer = request.getHeader("Referer");
+        request.getSession().setAttribute("prevPage", referrer);
         return "/login_form";
     }
 }

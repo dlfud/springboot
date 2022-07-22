@@ -128,4 +128,4 @@ CREATE TABLE site_user(
     email TEXT UNIQUE NOT NULL
 );
 
-SELECT * FROM Siteuser;
+SELECT * FROM site_user;

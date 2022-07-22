@@ -2,7 +2,6 @@ package com.mysite.sbb.user.service;
 
 import com.mysite.sbb.user.UserRole;
 import com.mysite.sbb.user.dao.SiteUserRepository;
-import com.mysite.sbb.user.dao.UserRepository;
 import com.mysite.sbb.user.domain.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
