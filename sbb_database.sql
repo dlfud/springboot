@@ -123,9 +123,14 @@ SELECT * FROM Answer;
 
 CREATE TABLE site_user(
     id BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    user_name TEXT UNIQUE NOT NULL,
-    `password` TEXT NOT NULL,
-    email TEXT UNIQUE NOT NULL
+    username varchar(50) UNIQUE not null,
+    `password` VARCHAR(150) not null,
+    email VARCHAR(50) UNIQUE NOT NULL
 );
 
-SELECT * FROM site_user;
+insert into site_user set
+username = "유저1",
+`password` = "1234",
+email = "test@test.com";
+
+select * from site_user;
