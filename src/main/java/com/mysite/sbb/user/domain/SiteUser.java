@@ -11,10 +11,10 @@ import javax.persistence.*;
 public class SiteUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(unique = true)
-    private String userName;
+    private String username;
 
     private String password;
 
